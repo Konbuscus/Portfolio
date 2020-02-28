@@ -4,7 +4,7 @@
 			<div class="hero-body">
 				<div class="container">
 					<h1 class="title is-2">
-						Meet Axel
+						Meet Me ! 
 					</h1>
 				</div>
 			</div>
@@ -41,7 +41,7 @@
 								Broad Business Exposure
 							</h3>
 							<p>
-								6 years of startup experience as a co-founder of Knotty Tie Co. Managed and contributed to development, UX, marketing, service, and operations.
+								4 years of  experience as a software engineer. Managed and contributed to development, UX, service, and operations.
 							</p>
 						</div>
 					</div>			
