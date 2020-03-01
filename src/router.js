@@ -16,27 +16,32 @@ export default new Router({
         {
             path: "/",
             name: "home",
-            component: Home
+            component: Home,
+            title: "Axel Masson"
         },
         {
             path: "/about",
             name: "about",
-            component: About
+            component: About,
+            title: "Axel Masson"
         },
         {
             path: "/contact",
             name: "contact",
-            component: Contact
+            component: Contact,
+            title: "Axel Masson"
         },
         {
             path: "/projects",
             name: "projects",
-            component : Projects
+            component : Projects,
+            title: "Axel Masson"
         },
         {
             path: "/project/:Slug",
             name: "project",
-            component: Project
+            component: Project,
+            title: "Axel Masson"
         }
     ]
 });
