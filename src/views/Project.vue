@@ -33,12 +33,8 @@
 
 <script>
     import ProjectsService from '@/services/ProjectsService'
-    //import PostCard from '@/components/PostCard'
     export default {
         name: "project",
-       // components:{
-         // PostCard
-        //},
         data() {
             return{
                 airtableResponse: []
@@ -46,12 +42,9 @@
         },
         mounted: function () {
             let self = this
-            console.log("here 1")
             async function getProject() {
                 try{
-                    console.log("fucking slug " + self.$route.params.Slug);
                     const response = await ProjectsService.getProject(self.$route.params.Slug)
-                    console.log(response)
                     self.airtableResponse = response.data.records
 
                 }catch(err){
@@ -63,7 +56,6 @@
         computed: {
             project(){
                 let self = this
-                console.log(self.airtableResponse.length);
                 if (self.airtableResponse[0]){
                     let thisProject = {
                         title: self.airtableResponse[0].fields.Title,
@@ -74,7 +66,6 @@
                     return thisProject
                 }
                 return this.thisProject;
-                //return this.t hisProject
             }
         }
     };
