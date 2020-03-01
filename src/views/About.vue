@@ -54,57 +54,9 @@
 			</h2>
 			<div class="container">
 				<div class="columns is-centered">
-					<div class="column is-one-fifth">
-						<div class="box">
-							<figure class="image is-square">
-								<img src="../assets/vue-logo.png" alt="Placeholder image">
-							</figure>
-							<h3 class="tech-box-title title is-4 has-text-weight-medium has-text-centered">
-								Vue.js
-							</h3>
-							<p>
-								This portfolio is made with vue
-							</p>
-						</div>
-					</div>
-					<div class="column is-one-fifth">
-						<div class="box">
-							<figure class="image is-square">
-								<img src="../assets/js-logo.png" alt="Placeholder image">
-							</figure>
-							<h3 class="tech-box-title title is-4 has-text-weight-medium has-text-centered">
-								JavaScript
-							</h3>
-							<p>
-								Proficient in ES6 and ES5 JS
-							</p>
-						</div>
-					</div>
-					<div class="column is-one-fifth">
-						<div class="box">
-							<figure class="image is-square">
-								<img src="../assets/aspnet-logo.png" alt="Placeholder image">
-							</figure>
-							<h3 class="tech-box-title title is-4 has-text-weight-medium has-text-centered">
-								ASP.NET
-							</h3>
-							<p>
-								Web application wrote wih ASP.NET and .NET Core
-							</p>
-						</div>
-					</div>
-					<div class="column is-one-fifth">
-						<div class="box">
-							<figure class="image is-square">
-								<img src="../assets/database-logo.png" alt="Placeholder image">
-							</figure>
-							<h3 class="tech-box-title title is-4 has-text-weight-medium has-text-centered">
-								Databases
-							</h3>
-							<p>
-							Familiar with NoSQL and SQL Databases
-							</p>
-						</div>
+
+					<div class="column is-one-fifth" v-bind:key="tech.slug" v-for="tech in techs">
+						<box-tech v-bind="tech"></box-tech>
 					</div>
 				</div>
         <RadarChart/>
@@ -139,9 +91,47 @@
 </style>
 
 <script>
-  import RadarChart from '../components/ChartContainer.vue'
+import RadarChart from '../components/ChartContainer.vue'
+import BoxTech from '../components/BoxTech.vue'
+import ProjectsService from "@/services/ProjectsService"
+
 	export default {
     name: "about",
-    components: {RadarChart}
-	};
+	components: {"RadarChart": RadarChart,"BoxTech": BoxTech},
+	data(){
+		return {
+			airTableResponse: []
+		}
+	},
+	mounted: function(){
+		let self = this;
+		async function getTechs(){
+			try{
+				const response = await ProjectsService.getTechs();
+				self.airTableResponse = response.data.records;
+			}catch(err){
+				console.log(err);
+			}
+		}
+		getTechs();
+	},
+	computed:{
+		techs(){
+			let self = this;
+			let techsList = [];
+
+			for(var i = 0; i < self.airTableResponse.length; i++){
+				console.log(self.airTableResponse[i]);
+				let tech = {
+					title: self.airTableResponse[i].fields.Title,
+					description: self.airTableResponse[i].fields.Description,
+					image: self.airTableResponse[i].fields.Logo[0].url,
+					slug: self.airTableResponse[i].fields.Slug
+				}
+				techsList.push(tech);
+			}
+			return techsList;
+		}
+	}
+}
 </script>

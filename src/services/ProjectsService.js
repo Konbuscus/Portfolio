@@ -8,11 +8,17 @@ const Axios = axios.create({
 
 const AxiosSkills = axios.create({
     baseURL : "https://api.airtable.com/v0/" + PROJECTS + "/Skills"
-})
+});
+
+const AxiosTechs = axios.create({
+    baseURL : "https://api.airtable.com/v0/" + PROJECTS + "/Techs"
+});
+
 
 //?api_key="+API_KEY
 Axios.defaults.headers.common = {'Authorization': `Bearer ` + API_KEY}
 AxiosSkills.defaults.headers.common = {'Authorization': `Bearer ` + API_KEY}
+AxiosTechs.defaults.headers.common = {'Authorization': `Bearer ` + API_KEY}
 
 export default{
     getProjects(){
@@ -23,5 +29,8 @@ export default{
     },
     getSkills(){
         return AxiosSkills.get();
+    },
+    getTechs(){
+        return AxiosTechs.get();
     }    
 }

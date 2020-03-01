@@ -6,42 +6,61 @@ import Contact from "./views/Contact.vue"
 import Projects from "./views/Projects.vue"
 import Project from "./views/Project.vue"
 
+const DEFAULT_TITLE = "Axel Masson";
+
 Vue.use(Router);
 
 export default new Router({
 
     mode: "history",
     base: process.env.BASE_URL,
+    beforeEach:((toRoute, fromRoute, next) => {
+        window.document.title = toRoute.meta && toRoute.meta.title ? toRoute.meta.title : DEFAULT_TITLE;
+      
+        next();
+    }),
     routes : [
         {
             path: "/",
             name: "home",
             component: Home,
-            title: "Axel Masson"
+            meta: {
+                title: DEFAULT_TITLE
+              }
         },
         {
             path: "/about",
             name: "about",
             component: About,
-            title: "Axel Masson"
+            meta: {
+                title: DEFAULT_TITLE
+            }
         },
         {
             path: "/contact",
             name: "contact",
             component: Contact,
-            title: "Axel Masson"
+            meta: {
+                title: DEFAULT_TITLE
+            }
         },
         {
             path: "/projects",
             name: "projects",
             component : Projects,
-            title: "Axel Masson"
+            meta: {
+                title: DEFAULT_TITLE
+            }
         },
         {
             path: "/project/:Slug",
             name: "project",
             component: Project,
-            title: "Axel Masson"
+            meta: {
+                title: DEFAULT_TITLE
+            }
         }
     ]
+
+   
 });
