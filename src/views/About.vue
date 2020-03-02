@@ -121,7 +121,6 @@ import ProjectsService from "@/services/ProjectsService"
 			let techsList = [];
 
 			for(var i = 0; i < self.airTableResponse.length; i++){
-				console.log(self.airTableResponse[i]);
 				let tech = {
 					title: self.airTableResponse[i].fields.Title,
 					description: self.airTableResponse[i].fields.Description,
