@@ -14,11 +14,15 @@ const AxiosTechs = axios.create({
     baseURL : "https://api.airtable.com/v0/" + PROJECTS + "/Techs"
 });
 
+const AxiosEducation = axios.create({
+    baseURL : "https://api.airtable.com/v0/" + PROJECTS + "/Education"
+});
 
 //?api_key="+API_KEY
 Axios.defaults.headers.common = {'Authorization': `Bearer ` + API_KEY}
 AxiosSkills.defaults.headers.common = {'Authorization': `Bearer ` + API_KEY}
 AxiosTechs.defaults.headers.common = {'Authorization': `Bearer ` + API_KEY}
+AxiosEducation.defaults.headers.common = {'Authorization': `Bearer ` + API_KEY}
 
 export default{
     getProjects(){
@@ -32,5 +36,8 @@ export default{
     },
     getTechs(){
         return AxiosTechs.get();
+    },
+    getEducation(){
+        return AxiosEducation.get();
     }    
 }

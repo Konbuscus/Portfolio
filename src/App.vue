@@ -30,6 +30,9 @@
           <router-link to="/projects" class="navbar-item">
             Projects
           </router-link>
+            <router-link to="/education" class="navbar-item">
+            Education
+          </router-link>
           <router-link to="/contact" class="navbar-item">
             Contact
           </router-link>
