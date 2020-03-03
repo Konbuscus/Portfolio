@@ -6,6 +6,7 @@ import Contact from "./views/Contact.vue"
 import Projects from "./views/Projects.vue"
 import Project from "./views/Project.vue"
 import Education from "./views/Education.vue"
+import WorkExperience from "./views/WorkExperience.vue"
 
 const DEFAULT_TITLE = "Axel Masson";
 
@@ -57,6 +58,14 @@ export default new Router({
             path: "/education",
             name: "education",
             component: Education,
+            meta : {
+                title: DEFAULT_TITLE
+            }
+        },
+        {
+            path: "/experiences",
+            name: "Work experiences",
+            component: WorkExperience,
             meta : {
                 title: DEFAULT_TITLE
             }
