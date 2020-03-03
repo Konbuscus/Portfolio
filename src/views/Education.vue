@@ -22,7 +22,7 @@
 </template>
 
 <style type="text/css">
-.box {
+.education {
 	height: 100%;
     width: 50%
 }
