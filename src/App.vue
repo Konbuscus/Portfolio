@@ -78,7 +78,7 @@
     width: 100%;
   }
   .hero{
-    background-image: url('./assets/banner.jpg');
+    background-image: url('../public/images/banner.jpg');
     width: 100%;
     position: relative; /* If you want text inside of it */
   }

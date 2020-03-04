@@ -16,7 +16,7 @@
             <div class="container is-fluid">
                 <div class="columns">
                     <div class="column is-two-thirds">
-                        <vue-simple-markdown :source="project.body"></vue-simple-markdown>
+                       <VueShowdown :markdown="project.body" flavor="github"></VueShowdown>
                     </div>
                     <div class="column is-one-third">
                         <div class="columns is-multiline">
@@ -37,7 +37,7 @@
         name: "project",
         data() {
             return{
-                airtableResponse: []
+                result: []
             }
         },
         mounted: function () {
@@ -45,7 +45,7 @@
             async function getProject() {
                 try{
                     const response = await ProjectsService.getProject(self.$route.params.Slug)
-                    self.airtableResponse = response.data.records
+                    self.result = response.data;
 
                 }catch(err){
                     console.log(err)
@@ -55,13 +55,14 @@
         },
         computed: {
             project(){
-                let self = this
-                if (self.airtableResponse[0]){
-                    let thisProject = {
-                        title: self.airtableResponse[0].fields.Title,
-                        snippet: self.airtableResponse[0].fields.Excerpt,
-                        images: self.airtableResponse[0].fields.Image,
-                        body: self.airtableResponse[0].fields.Body
+                let self = this;
+                let thisProject = {};
+                if (self.result.data){
+                    thisProject = {
+                        title: self.result.data.Title,
+                        snippet: self.result.data.Excerpt,
+                        images: self.result.data.Image,
+                        body: self.result.data.Body
                     }
                     return thisProject
                 }

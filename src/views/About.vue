@@ -100,7 +100,7 @@ import ProjectsService from "@/services/ProjectsService"
 	components: {"RadarChart": RadarChart,"BoxTech": BoxTech},
 	data(){
 		return {
-			airTableResponse: []
+			result: []
 		}
 	},
 	mounted: function(){
@@ -108,7 +108,7 @@ import ProjectsService from "@/services/ProjectsService"
 		async function getTechs(){
 			try{
 				const response = await ProjectsService.getTechs();
-				self.airTableResponse = response.data.records;
+				self.result = response.data.data;
 			}catch(err){
 				console.log(err);
 			}
@@ -120,12 +120,12 @@ import ProjectsService from "@/services/ProjectsService"
 			let self = this;
 			let techsList = [];
 
-			for(var i = 0; i < self.airTableResponse.length; i++){
+			for(var i = 0; i < self.result.length; i++){
 				let tech = {
-					title: self.airTableResponse[i].fields.Title,
-					description: self.airTableResponse[i].fields.Description,
-					image: self.airTableResponse[i].fields.Logo[0].url,
-					slug: self.airTableResponse[i].fields.Slug
+					title: self.result[i].Title,
+					description: self.result[i].Description,
+					image: self.result[i].Logo,
+					slug: self.result[i].Slug
 				}
 				techsList.push(tech);
 			}

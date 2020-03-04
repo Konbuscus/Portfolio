@@ -1,52 +1,64 @@
 import axios from "axios"
 
-const PROJECTS = "apphz3PNJxSGDcTDC";
-const API_KEY = "keyOBSRLs8BciPWqN";
-const Axios = axios.create({
-    baseURL: "https://api.airtable.com/v0/" + PROJECTS + "/Projects"
-});
-
-const AxiosSkills = axios.create({
-    baseURL : "https://api.airtable.com/v0/" + PROJECTS + "/Skills"
-});
-
-const AxiosTechs = axios.create({
-    baseURL : "https://api.airtable.com/v0/" + PROJECTS + "/Techs"
-});
-
-const AxiosEducation = axios.create({
-    baseURL : "https://api.airtable.com/v0/" + PROJECTS + "/Education"
-});
-
-const AxiosWork = axios.create({
-    baseURL: "https://api.airtable.com/v0/" + PROJECTS +  "/WorkExperiences"
-});
-
-
-//?api_key="+API_KEY
-Axios.defaults.headers.common = {'Authorization': `Bearer ` + API_KEY}
-AxiosSkills.defaults.headers.common = {'Authorization': `Bearer ` + API_KEY}
-AxiosTechs.defaults.headers.common = {'Authorization': `Bearer ` + API_KEY}
-AxiosEducation.defaults.headers.common = {'Authorization': `Bearer ` + API_KEY}
-AxiosWork.defaults.headers.common = {'Authorization': `Bearer ` + API_KEY}
+const baseURL = "https://portfolio-data-api.herokuapp.com/api";
+const PROJECTS = "/projects";
+const SKILLS = "/skills";
+const TECHS = "/techs";
+const WORKEXPERIENCES = "/workexperiences";
+const EDUCATION = "/educations";
 
 export default{
     getProjects(){
-        return Axios.get();
+    
+        try{
+            const response =  axios.get(baseURL + PROJECTS);
+            return response;
+        }catch(err){
+            console.log(err);
+        }
     },
-    getProject(slug) {
-        return Axios.get("?filterByFormula={Slug}='" + slug + "'");
+    getProject(_id) {
+        try{
+            const response =  axios.get( baseURL + PROJECTS + "/" + _id);
+            return response;
+        }catch(err){
+            console.log(err);
+        }
     },
     getSkills(){
-        return AxiosSkills.get();
+        
+        try{
+            const response =  axios.get(baseURL + SKILLS);
+            return response;
+        }catch(err){
+            console.log(err);
+        }
     },
     getTechs(){
-        return AxiosTechs.get();
+        
+        try{
+            const response =  axios.get(baseURL + TECHS);
+            return response;
+        }catch(err){
+            console.log(err);
+        }
     },
     getEducation(){
-        return AxiosEducation.get();
+        
+        try{
+            const response =  axios.get(baseURL + EDUCATION);
+            return response;
+        }catch(err){
+            console.log(err);
+        }
     },
     getWorkExperiences(){
-        return AxiosWork.get();
+       
+        try{
+            const response =  axios.get(baseURL + WORKEXPERIENCES);
+            return response;
+        }catch(err){
+            console.log(err);
+        }
     }    
 }

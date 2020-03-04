@@ -41,7 +41,7 @@ export default {
  components : {"WorkExperiencesBox": WorkExperiencesBox},
  data(){
 		return {
-			airTableResponse: []
+			result: []
 		}
 	},
 	mounted: function(){
@@ -49,7 +49,7 @@ export default {
 		async function getWorkExperiences(){
 			try{
 				const response = await ProjectsService.getWorkExperiences();
-				self.airTableResponse = response.data.records;
+				self.result = response.data.data;
 			}catch(err){
 				console.log(err);
 			}
@@ -60,15 +60,15 @@ export default {
 		works(){
 			let self = this;
 			let workExperiencesList = [];
-			for(var i = 0; i < self.airTableResponse.length; i++){
+			for(var i = 0; i < self.result.length; i++){
 				let workExperience = {
-                    where: self.airTableResponse[i].fields.Where,
-                    as: self.airTableResponse[i].fields.As,
-                    description:self.airTableResponse[i].fields.Description,
-                    date: self.airTableResponse[i].fields.Date,
-                    stillActive: self.airTableResponse[i].fields.StillActive,
-                    logo: self.airTableResponse[i].fields.CompanyLogo[0].url,
-					slug: self.airTableResponse[i].fields.Slug
+                    where: self.result[i].Where,
+                    as: self.result[i].As,
+                    description:self.result[i].Description,
+                    date: self.result[i].Date,
+                    stillActive: self.result[i].StillActive,
+                    logo: self.result[i].CompanyLogo,
+					slug: self.result[i]._id
 				}
 				workExperiencesList.push(workExperience);
 			}

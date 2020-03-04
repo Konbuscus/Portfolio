@@ -33,7 +33,7 @@ export default {
   },
   data(){
     return {
-      airTableResponse: []
+      result: []
     }
   },
   mounted: function (){
@@ -41,7 +41,7 @@ export default {
     async function getProjects(){
       try{
         const response = await ProjectsService.getProjects();
-        self.airTableResponse = response.data.records;
+        self.result = response.data.data;
       }catch(err){
         console.log(err);
       }
@@ -52,16 +52,16 @@ export default {
     projects(){
       let self = this;
       let projectList = [];
-      for(var i = 0; i  < self.airTableResponse.length; i++){
+      for(var i = 0; i  < self.result.length; i++){
 
-        if(self.airTableResponse[i].fields.Published){
+        if(self.result[i].Published){
 
           let project = {
-            title: self.airTableResponse[i].fields.Title,
-            date: self.airTableResponse[i].fields['Date Published'],
-            snippet: self.airTableResponse[i].fields.Excerpt,
-            image: self.airTableResponse[i].fields.Image[0].url,
-            slug: self.airTableResponse[i].fields.Slug
+            title: self.result[i].Title,
+            date: self.result[i].DatePublished,
+            snippet: self.result[i].Excerpt,
+            image: self.result[i].Image,
+            slug: self.result[i]._id
           }
           projectList.push(project);
         }

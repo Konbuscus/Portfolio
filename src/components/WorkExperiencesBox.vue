@@ -11,7 +11,7 @@
                         <h4 class="tech-box-title title is-4 has-text-weight-medium has-text-centered">{{where}} : {{as}} </h4>
                         <p>{{description}} : {{date}}</p>
                         <p>Still there ?</p>
-                        <img v-if="stillActive" src="../assets/ok.png"  /> <img v-else src="../assets/no.png"/> 
+                        <img v-if="stillActive" src="../../public/images/ok.png"  /> <img v-else src="../../public/images/no.png"/> 
                     </div>
                 </div>
             </article>

@@ -41,7 +41,7 @@ export default {
  components : {"EducationBox": EducationBox},
  data(){
 		return {
-			airTableResponse: []
+			result: []
 		}
 	},
 	mounted: function(){
@@ -49,7 +49,7 @@ export default {
 		async function getEducation(){
 			try{
 				const response = await ProjectsService.getEducation();
-				self.airTableResponse = response.data.records;
+				self.result = response.data.data;
 			}catch(err){
 				console.log(err);
 			}
@@ -61,13 +61,13 @@ export default {
 			let self = this;
 			let educationList = [];
 
-			for(var i = 0; i < self.airTableResponse.length; i++){
+			for(var i = 0; i < self.result.length; i++){
 				let education = {
-					graduation: self.airTableResponse[i].fields.Graduation,
-					where: self.airTableResponse[i].fields.Where,
-                    date: self.airTableResponse[i].fields.Date,
-					logo: self.airTableResponse[i].fields.EntityLogo[0].url,
-					slug: self.airTableResponse[i].fields.Slug
+					graduation: self.result[i].Graduation,
+					where: self.result[i].Where,
+                    date: self.result[i].Date,
+					logo: self.result[i].EntityLogo,
+					slug: self.result[i].Slug
 				}
 				educationList.push(education);
 			}

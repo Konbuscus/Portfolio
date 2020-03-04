@@ -42,11 +42,11 @@ export default {
             };  
             this.chartdata.datasets = [];
             this.chartdata.labels = [];
-            for(var i = 0; i < skillsList.data.records.length; i++){
+            for(var i = 0; i < skillsList.data.data.length; i++){
 
-                var skill = skillsList.data.records[i];
-                this.chartdata.labels.push(skill.fields["Skill"]);
-                data.push(skill.fields["Percentage"]);
+                var skill = skillsList.data.data[i];
+                this.chartdata.labels.push(skill.name);
+                data.push(skill.percentage);
             }
             this.chartdata.datasets.push({data: data,
                                         borderColor: "rgb(65, 105, 225)",
