@@ -54,6 +54,7 @@
 </template>
 
 <script>
+  import ps from "./services/ProjectsService";
   export default {
     name: "App",
     data() {
@@ -61,6 +62,9 @@
         showNav: false
       }
     },
+    created: function(){
+      ps.wakeUpHeroku();
+    }
   };
 </script>
 
