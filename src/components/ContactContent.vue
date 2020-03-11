@@ -1,7 +1,7 @@
 <template>
     <div>
        <p class="is-size-4 has-text-weight-medium"><strong>{{Network}}</strong></p>
-        <p><a :href="Value">{{Value}}</a></p><br>
+        <p><a :href="Value">{{Title}}</a></p><br>
     </div>
 </template>
 
@@ -13,6 +13,7 @@ export default {
     props: {
         Network: String,
         Value: String,
+        Title: String
     }
 }
 </script>

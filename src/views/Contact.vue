@@ -60,6 +60,7 @@ export default {
 			let contact =  {
 				Network: self.result[i].Network,
 				Value: self.result[i].Value,
+				Title: self.result[i].Title,
 				slug: self.result[i]._id
 				}
 			contactList.push(contact);
