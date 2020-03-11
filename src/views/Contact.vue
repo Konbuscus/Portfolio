@@ -14,30 +14,9 @@
 				<div class="columns is-centered">
 					<div class="column is-one-third">
 						<div class="box">					
-							<h3 class="is-size-4 has-text-weight-medium">
-								Email
-							</h3>
-							<p>
-								<a href="mailto:mark@hellomark.dev">axel.masson.pro@gmail.com</a>
-							</p>
-							<h3 class="is-size-4 has-text-weight-medium">
-								Twitter
-							</h3>
-							<p>
-								<a href="https://twitter.com/Konbuscus">@Konbuscus</a>
-							</p>
-							<h3 class="is-size-4 has-text-weight-medium">
-								Github
-							</h3>
-							<p>
-								<a href="https://github.com/Konbuscus">github.com/Konbuscus</a>
-							</p>
-							<h3 class="is-size-4 has-text-weight-medium">
-								LinkedIn
-							</h3>
-							<p>
-								<a href="https://www.linkedin.com/in/axel-masson-27242b119/">Profile</a>
-							</p>
+							<div v-bind:key="cont.slug" v-for="cont in contacts">
+								<contact-content v-bind="cont"></contact-content>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -49,7 +28,44 @@
 
 <script>
 
+import ContactContent from '../components/ContactContent.vue'
+import ProjectService from "@/services/ProjectsService"
+
 export default {
   name: "contact",
+  components : {"ContactContent": ContactContent},
+  data(){
+	return {
+		result: []
+	}
+  },
+  mounted: function(){
+	let self = this;
+	async function getContacts(){
+		try{
+			const response = await ProjectService.getContacts();
+			self.result = response.data.data;
+		}catch(err){
+			console.log(err);
+		}
+	}
+	getContacts();
+	},
+	computed : {
+		contacts(){
+		let self = this;
+		let contactList = [];
+
+		for(var i  = 0; i < self.result.length; i++){
+			let contact =  {
+				Network: self.result[i].Network,
+				Value: self.result[i].Value,
+				slug: self.result[i]._id
+				}
+			contactList.push(contact);
+		}
+		return contactList;
+		}
+	}
 };
 </script>
