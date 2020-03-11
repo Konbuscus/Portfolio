@@ -32,6 +32,12 @@
 							<p>
 								<a href="https://github.com/Konbuscus">github.com/Konbuscus</a>
 							</p>
+							<h3 class="is-size-4 has-text-weight-medium">
+								LinkedIn
+							</h3>
+							<p>
+								<a href="https://www.linkedin.com/in/axel-masson-27242b119/">Profile</a>
+							</p>
 						</div>
 					</div>
 				</div>
