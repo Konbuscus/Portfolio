@@ -41,7 +41,7 @@
             }
         },
         mounted: function () {
-            let self = this
+            let self = this;
             async function getProject() {
                 try{
                     const response = await ProjectsService.getProject(self.$route.params.Slug)
