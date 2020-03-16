@@ -1,5 +1,5 @@
 <template>
-        <div class="box work" >
+        <div class="column is-half box work" >
             <article class="media">
                 <div class="media-left">
                     <figure class="image is-128x128">

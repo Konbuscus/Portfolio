@@ -1,5 +1,5 @@
 <template>
-        <div class="box education" >
+        <div class="column is-half box education" >
             <article class="media">
                 <div class="media-left">
                     <figure class="image is-128x128">

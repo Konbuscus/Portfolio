@@ -11,14 +11,13 @@
         </section>
         <section class="section">
             <div class="container">
-                <div class="columns is-centered"  v-bind:key="work.slug" v-for="work in works">
+                <div class="columns is-mobile is-multiline is-centered"  v-bind:key="work.slug" v-for="work in works">
                 <WorkExperiencesBox v-bind="work"></WorkExperiencesBox>
-                <br>
-                </div>
-                
+				<br>
+			</div>
             </div>
         </section>
-</div>
+	</div>
 </template>
 
 <style type="text/css">

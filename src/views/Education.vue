@@ -11,7 +11,7 @@
         </section>
         <section class="section">
             <div class="container">
-                <div class="columns is-centered"  v-bind:key="ed.slug" v-for="ed in education">
+                <div class="columns is-mobile is-multiline is-centered"  v-bind:key="ed.slug" v-for="ed in education">
                 <education-box v-bind="ed"></education-box>
                 <br>
                 </div>
