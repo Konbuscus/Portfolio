@@ -49,8 +49,8 @@ export default {
                 data.push(skill.percentage);
             }
             this.chartdata.datasets.push({data: data,
-                                        borderColor: "rgb(65, 105, 225)",
-                                        pointBackgroundColor: "rgba(47, 91, 224,1)",
+                                        borderColor: "#62C3A6",
+                                        pointBackgroundColor: "#62C3A6",
                                         pointBorderColor: "#fff",
                                         pointHoverBackgroundColor: "#fff",
                                         pointHoverBorderColor: "rgba(47, 91, 224,1)",
