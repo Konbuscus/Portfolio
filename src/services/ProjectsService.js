@@ -7,6 +7,7 @@ const TECHS = "/techs";
 const WORKEXPERIENCES = "/workexperiences";
 const EDUCATION = "/educations";
 const CONTACTS = "/contact";
+const CRYPTOS = "/getCryptos";
 
 export default{
     getProjects(){
@@ -67,6 +68,15 @@ export default{
             const response = axios.get(baseURL + CONTACTS);
             return response;
         }catch(err){
+            console.log(err);
+        }
+    },
+    getCryptos(){
+        try {
+            const response = axios.get(baseURL + CRYPTOS);
+            return response
+        }
+        catch(err){
             console.log(err);
         }
     }

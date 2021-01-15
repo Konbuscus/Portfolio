@@ -77,6 +77,14 @@ export default new Router({
             meta: {
                 title: DEFAULT_TITLE
             }
+        },
+        {
+            path: "/CryptOverview",
+            name : "Cryptos overview",
+            component : "",
+            meta: {
+                title : DEFAULT_TITLE
+            }
         }
     ]
 
