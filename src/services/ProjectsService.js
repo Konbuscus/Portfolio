@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const baseURL = "https://portfolio-data-api.herokuapp.com/api";
+const baseURL = "https://portfolio-api-4u9u.onrender.com/api";
 const PROJECTS = "/projects";
 const SKILLS = "/skills";
 const TECHS = "/techs";
